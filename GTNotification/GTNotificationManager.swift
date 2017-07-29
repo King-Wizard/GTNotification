@@ -666,6 +666,10 @@ public class GTNotificationManager: NSObject, GTNotificationViewDelegate
     */
     public func dismissCurrentNotification() {
         if let notificationView = self.currentNotificationView {
+            
+            self.dismissalTimer?.invalidate()
+            self.dismissalTimer = nil
+            
             // Animate the notification
             notificationView.animateNotification(willShow: false, completion: {
                 (finished: Bool) -> Void in
